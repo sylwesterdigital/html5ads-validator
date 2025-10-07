@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <div id="drop" class="drop">
+    <p><strong>Drag &amp; drop</strong> your <code>.zip</code> here, or</p>
+    <label class="btn">Choose File <input id="file" type="file" accept=".zip" hidden></label>
+    <p class="meta">Remote URLs: {{ 'allowed' if allow_remote else 'blocked' }} · <a href="#" onclick="fetch('/runs').then(r=>r.json()).then(d=>alert(JSON.stringify(d.runs,null,2)));return false;">Recent runs</a></p>
+  </div>
+</section>
+<section id="meta" class="card" style="display:none"></section>
+<section id="archive" class="card" style="display:none"></section>
+<section id="matrix" class="card" style="display:none"></section>
+<section id="network" class="card" style="display:none"></section>
+{% endblock %}

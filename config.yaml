@@ -1,0 +1,50 @@
+app:
+  title: "HTML5 Ad ZIP Validator"
+  max_zip_bytes: 204800          # 200 KB default limit
+  allow_remote_urls: false       # disallow external HTTP(S) refs in HTML/JS
+  require_root_index: true
+
+  # Render thresholds (used only if Playwright is installed)
+  dcl_ms_good: 1000              # DOMContentLoaded under 1s = green
+  animation_max_ms: 15000        # <= 15s ideal, >15s = warn
+
+  deny_ext: [".mp4", ".mov", ".avi", ".exe", ".bat", ".sh", ".php", ".py", ".rb", ".jar"]
+
+  # Use a proper YAML list (one item per line)
+  allow_ext:
+    - ".html"
+    - ".htm"
+    - ".css"
+    - ".js"
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".gif"
+    - ".svg"
+    - ".webp"
+    - ".woff"
+    - ".woff2"
+    - ".ttf"
+    - ".json"
+    - ".txt"
+    - ".mp3"
+    - ".ogg"
+    - ".m4a"
+
+  junk_prefixes: ["__MACOSX/"]
+  junk_files: [".DS_Store"]
+
+  # Use single quotes so regex backslashes are not eaten by YAML
+  click_patterns:
+    - 'var\s+clickTag\s*='
+    - 'window\.clickTag\s*='
+    - '\bclickTag\s*='
+    - 'Enabler\.exit\s*\('
+    - 'studio\.Enabler'
+
+logging:
+  level: INFO        # DEBUG|INFO|WARNING|ERROR
+  json: false        # true -> JSON logs
+
+ui:
+  show_metadata_panel: true

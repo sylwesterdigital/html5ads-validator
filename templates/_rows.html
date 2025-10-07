@@ -1,0 +1,9 @@
+{% for r in results %}
+<tr>
+  <td class="cat">{{ r.category }}</td>
+  <td>{{ r.label }}</td>
+  <td class="ta-r"><span class="badge {{ r.status }}">{{ r.value }}</span>
+    {% if r.help %}<div class="help">{{ r.help }}</div>{% endif %}
+</td>
+</tr>
+{% endfor %}
